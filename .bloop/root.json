@@ -1,0 +1,939 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "root",
+        "directory": "/home/ardfard/Documents/codes/mergetrain",
+        "workspaceDir": "/home/ardfard/Documents/codes/mergetrain",
+        "sources": [
+            "/home/ardfard/Documents/codes/mergetrain/src/main/scala-2.13",
+            "/home/ardfard/Documents/codes/mergetrain/src/main/scala",
+            "/home/ardfard/Documents/codes/mergetrain/src/main/java",
+            "/home/ardfard/Documents/codes/mergetrain/target/scala-2.13/src_managed/main"
+        ],
+        "dependencies": [
+            
+        ],
+        "classpath": [
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.3/scala-library-2.13.3.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio_2.13/1.0.1/zio_2.13-1.0.1.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-macros_2.13/1.0.0/zio-macros_2.13-1.0.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/core_2.13/2.2.9/core_2.13-2.2.9.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/async-http-client-backend-zio_2.13/2.2.9/async-http-client-backend-zio_2.13-2.2.9.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/circe_2.13/2.2.9/circe_2.13-2.2.9.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-core_2.13/0.13.0/circe-core_2.13-0.13.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-generic_2.13/0.12.3/circe-generic_2.13-0.12.3.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-parser_2.13/0.13.0/circe-parser_2.13-0.13.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-stacktracer_2.13/1.0.1/zio-stacktracer_2.13-1.0.1.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/izumi-reflect_2.13/1.0.0-M5/izumi-reflect_2.13-1.0.0-M5.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-test-sbt_2.13/1.0.0/zio-test-sbt_2.13-1.0.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/model/core_2.13/1.1.4/core_2.13-1.1.4.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/async-http-client-backend_2.13/2.2.9/async-http-client-backend_2.13-2.2.9.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/zio_2.13/2.2.9/zio_2.13-2.2.9.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-streams_2.13/1.0.1/zio-streams_2.13-1.0.1.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-interop-reactivestreams_2.13/1.0.3.5/zio-interop-reactivestreams_2.13-1.0.3.5.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/json-common_2.13/2.2.9/json-common_2.13-2.2.9.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-numbers_2.13/0.13.0/circe-numbers_2.13-0.13.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.1.0/cats-core_2.13-2.1.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-jawn_2.13/0.13.0/circe-jawn_2.13-0.13.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/izumi-reflect-thirdparty-boopickle-shaded_2.13/1.0.0-M5/izumi-reflect-thirdparty-boopickle-shaded_2.13-1.0.0-M5.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-test_2.13/1.0.0/zio-test_2.13-1.0.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/asynchttpclient/async-http-client/2.12.1/async-http-client-2.12.1.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-macros_2.13/2.1.0/cats-macros_2.13-2.1.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.1.0/cats-kernel_2.13-2.1.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/jawn-parser_2.13/1.0.0/jawn-parser_2.13-1.0.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/portable-scala/portable-scala-reflect_2.13/1.0.0/portable-scala-reflect_2.13-1.0.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/asynchttpclient/async-http-client-netty-utils/2.12.1/async-http-client-netty-utils-2.12.1.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec-http/4.1.48.Final/netty-codec-http-4.1.48.Final.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-handler/4.1.48.Final/netty-handler-4.1.48.Final.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec-socks/4.1.48.Final/netty-codec-socks-4.1.48.Final.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-handler-proxy/4.1.48.Final/netty-handler-proxy-4.1.48.Final.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/netty/netty-reactive-streams/2.0.4/netty-reactive-streams-2.0.4.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.3/scala-reflect-2.13.3.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-buffer/4.1.48.Final/netty-buffer-4.1.48.Final.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-common/4.1.48.Final/netty-common-4.1.48.Final.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport/4.1.48.Final/netty-transport-4.1.48.Final.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec/4.1.48.Final/netty-codec-4.1.48.Final.jar",
+            "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-resolver/4.1.48.Final/netty-resolver-4.1.48.Final.jar"
+        ],
+        "out": "/home/ardfard/Documents/codes/mergetrain/.bloop/root",
+        "classesDir": "/home/ardfard/Documents/codes/mergetrain/.bloop/root/scala-2.13/classes",
+        "resources": [
+            "/home/ardfard/Documents/codes/mergetrain/src/main/resources",
+            "/home/ardfard/Documents/codes/mergetrain/target/scala-2.13/resource_managed/main"
+        ],
+        "scala": {
+            "organization": "org.scala-lang",
+            "name": "scala-compiler",
+            "version": "2.13.3",
+            "options": [
+                "-Ymacro-annotations"
+            ],
+            "jars": [
+                "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.3/scala-compiler-2.13.3.jar",
+                "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.3/scala-library-2.13.3.jar",
+                "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.3/scala-reflect-2.13.3.jar",
+                "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jline/jline/3.15.0/jline-3.15.0.jar",
+                "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.3.1/jna-5.3.1.jar"
+            ],
+            "analysis": "/home/ardfard/Documents/codes/mergetrain/target/streams/compile/bloopAnalysisOut/_global/streams/inc_compile_2.13.zip",
+            "setup": {
+                "order": "mixed",
+                "addLibraryToBootClasspath": true,
+                "addCompilerToClasspath": false,
+                "addExtraJarsToClasspath": false,
+                "manageBootClasspath": true,
+                "filterLibraryFromClasspath": true
+            }
+        },
+        "java": {
+            "options": [
+                
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "/usr/lib/jvm/java-11-openjdk-amd64",
+                "options": [
+                    "-Duser.dir=/home/ardfard/Documents/codes/mergetrain"
+                ]
+            },
+            "mainClass": [
+                
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.3/scala-library-2.13.3.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.3/scala-library-2.13.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "zio_2.13",
+                    "version": "1.0.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "zio_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio_2.13/1.0.1/zio_2.13-1.0.1.jar"
+                        },
+                        {
+                            "name": "zio_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio_2.13/1.0.1/zio_2.13-1.0.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "zio-macros_2.13",
+                    "version": "1.0.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "zio-macros_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-macros_2.13/1.0.0/zio-macros_2.13-1.0.0.jar"
+                        },
+                        {
+                            "name": "zio-macros_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-macros_2.13/1.0.0/zio-macros_2.13-1.0.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.softwaremill.sttp.client",
+                    "name": "core_2.13",
+                    "version": "2.2.9",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "core_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/core_2.13/2.2.9/core_2.13-2.2.9.jar"
+                        },
+                        {
+                            "name": "core_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/core_2.13/2.2.9/core_2.13-2.2.9-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.softwaremill.sttp.client",
+                    "name": "async-http-client-backend-zio_2.13",
+                    "version": "2.2.9",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "async-http-client-backend-zio_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/async-http-client-backend-zio_2.13/2.2.9/async-http-client-backend-zio_2.13-2.2.9.jar"
+                        },
+                        {
+                            "name": "async-http-client-backend-zio_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/async-http-client-backend-zio_2.13/2.2.9/async-http-client-backend-zio_2.13-2.2.9-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.softwaremill.sttp.client",
+                    "name": "circe_2.13",
+                    "version": "2.2.9",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/circe_2.13/2.2.9/circe_2.13-2.2.9.jar"
+                        },
+                        {
+                            "name": "circe_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/circe_2.13/2.2.9/circe_2.13-2.2.9-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-core_2.13",
+                    "version": "0.13.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-core_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-core_2.13/0.13.0/circe-core_2.13-0.13.0.jar"
+                        },
+                        {
+                            "name": "circe-core_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-core_2.13/0.13.0/circe-core_2.13-0.13.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-generic_2.13",
+                    "version": "0.12.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-generic_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-generic_2.13/0.12.3/circe-generic_2.13-0.12.3.jar"
+                        },
+                        {
+                            "name": "circe-generic_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-generic_2.13/0.12.3/circe-generic_2.13-0.12.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-parser_2.13",
+                    "version": "0.13.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-parser_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-parser_2.13/0.13.0/circe-parser_2.13-0.13.0.jar"
+                        },
+                        {
+                            "name": "circe-parser_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-parser_2.13/0.13.0/circe-parser_2.13-0.13.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "zio-test_2.13",
+                    "version": "1.0.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "zio-test_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-test_2.13/1.0.0/zio-test_2.13-1.0.0.jar"
+                        },
+                        {
+                            "name": "zio-test_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-test_2.13/1.0.0/zio-test_2.13-1.0.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "zio-test-sbt_2.13",
+                    "version": "1.0.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "zio-test-sbt_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-test-sbt_2.13/1.0.0/zio-test-sbt_2.13-1.0.0.jar"
+                        },
+                        {
+                            "name": "zio-test-sbt_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-test-sbt_2.13/1.0.0/zio-test-sbt_2.13-1.0.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "zio-stacktracer_2.13",
+                    "version": "1.0.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "zio-stacktracer_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-stacktracer_2.13/1.0.1/zio-stacktracer_2.13-1.0.1.jar"
+                        },
+                        {
+                            "name": "zio-stacktracer_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-stacktracer_2.13/1.0.1/zio-stacktracer_2.13-1.0.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "izumi-reflect_2.13",
+                    "version": "1.0.0-M5",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "izumi-reflect_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/izumi-reflect_2.13/1.0.0-M5/izumi-reflect_2.13-1.0.0-M5.jar"
+                        },
+                        {
+                            "name": "izumi-reflect_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/izumi-reflect_2.13/1.0.0-M5/izumi-reflect_2.13-1.0.0-M5-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.softwaremill.sttp.model",
+                    "name": "core_2.13",
+                    "version": "1.1.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "core_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/model/core_2.13/1.1.4/core_2.13-1.1.4.jar"
+                        },
+                        {
+                            "name": "core_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/model/core_2.13/1.1.4/core_2.13-1.1.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.softwaremill.sttp.client",
+                    "name": "async-http-client-backend_2.13",
+                    "version": "2.2.9",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "async-http-client-backend_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/async-http-client-backend_2.13/2.2.9/async-http-client-backend_2.13-2.2.9.jar"
+                        },
+                        {
+                            "name": "async-http-client-backend_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/async-http-client-backend_2.13/2.2.9/async-http-client-backend_2.13-2.2.9-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.softwaremill.sttp.client",
+                    "name": "zio_2.13",
+                    "version": "2.2.9",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "zio_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/zio_2.13/2.2.9/zio_2.13-2.2.9.jar"
+                        },
+                        {
+                            "name": "zio_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/zio_2.13/2.2.9/zio_2.13-2.2.9-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "zio-streams_2.13",
+                    "version": "1.0.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "zio-streams_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-streams_2.13/1.0.1/zio-streams_2.13-1.0.1.jar"
+                        },
+                        {
+                            "name": "zio-streams_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-streams_2.13/1.0.1/zio-streams_2.13-1.0.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "zio-interop-reactivestreams_2.13",
+                    "version": "1.0.3.5",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "zio-interop-reactivestreams_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-interop-reactivestreams_2.13/1.0.3.5/zio-interop-reactivestreams_2.13-1.0.3.5.jar"
+                        },
+                        {
+                            "name": "zio-interop-reactivestreams_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/zio-interop-reactivestreams_2.13/1.0.3.5/zio-interop-reactivestreams_2.13-1.0.3.5-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.softwaremill.sttp.client",
+                    "name": "json-common_2.13",
+                    "version": "2.2.9",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "json-common_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/json-common_2.13/2.2.9/json-common_2.13-2.2.9.jar"
+                        },
+                        {
+                            "name": "json-common_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/softwaremill/sttp/client/json-common_2.13/2.2.9/json-common_2.13-2.2.9-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-numbers_2.13",
+                    "version": "0.13.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-numbers_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-numbers_2.13/0.13.0/circe-numbers_2.13-0.13.0.jar"
+                        },
+                        {
+                            "name": "circe-numbers_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-numbers_2.13/0.13.0/circe-numbers_2.13-0.13.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-core_2.13",
+                    "version": "2.1.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-core_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.1.0/cats-core_2.13-2.1.0.jar"
+                        },
+                        {
+                            "name": "cats-core_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.1.0/cats-core_2.13-2.1.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.chuusai",
+                    "name": "shapeless_2.13",
+                    "version": "2.3.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "shapeless_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3.jar"
+                        },
+                        {
+                            "name": "shapeless_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.circe",
+                    "name": "circe-jawn_2.13",
+                    "version": "0.13.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "circe-jawn_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-jawn_2.13/0.13.0/circe-jawn_2.13-0.13.0.jar"
+                        },
+                        {
+                            "name": "circe-jawn_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-jawn_2.13/0.13.0/circe-jawn_2.13-0.13.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-reflect",
+                    "version": "2.13.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-reflect",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.3/scala-reflect-2.13.3.jar"
+                        },
+                        {
+                            "name": "scala-reflect",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.3/scala-reflect-2.13.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.portable-scala",
+                    "name": "portable-scala-reflect_2.13",
+                    "version": "1.0.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "portable-scala-reflect_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/portable-scala/portable-scala-reflect_2.13/1.0.0/portable-scala-reflect_2.13-1.0.0.jar"
+                        },
+                        {
+                            "name": "portable-scala-reflect_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/portable-scala/portable-scala-reflect_2.13/1.0.0/portable-scala-reflect_2.13-1.0.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-sbt",
+                    "name": "test-interface",
+                    "version": "1.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "test-interface",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar"
+                        },
+                        {
+                            "name": "test-interface",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "dev.zio",
+                    "name": "izumi-reflect-thirdparty-boopickle-shaded_2.13",
+                    "version": "1.0.0-M5",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "izumi-reflect-thirdparty-boopickle-shaded_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/izumi-reflect-thirdparty-boopickle-shaded_2.13/1.0.0-M5/izumi-reflect-thirdparty-boopickle-shaded_2.13-1.0.0-M5.jar"
+                        },
+                        {
+                            "name": "izumi-reflect-thirdparty-boopickle-shaded_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/zio/izumi-reflect-thirdparty-boopickle-shaded_2.13/1.0.0-M5/izumi-reflect-thirdparty-boopickle-shaded_2.13-1.0.0-M5-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.asynchttpclient",
+                    "name": "async-http-client",
+                    "version": "2.12.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "async-http-client",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/asynchttpclient/async-http-client/2.12.1/async-http-client-2.12.1.jar"
+                        },
+                        {
+                            "name": "async-http-client",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/asynchttpclient/async-http-client/2.12.1/async-http-client-2.12.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.reactivestreams",
+                    "name": "reactive-streams",
+                    "version": "1.0.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "reactive-streams",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar"
+                        },
+                        {
+                            "name": "reactive-streams",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-macros_2.13",
+                    "version": "2.1.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-macros_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-macros_2.13/2.1.0/cats-macros_2.13-2.1.0.jar"
+                        },
+                        {
+                            "name": "cats-macros_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-macros_2.13/2.1.0/cats-macros_2.13-2.1.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-kernel_2.13",
+                    "version": "2.1.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-kernel_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.1.0/cats-kernel_2.13-2.1.0.jar"
+                        },
+                        {
+                            "name": "cats-kernel_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.1.0/cats-kernel_2.13-2.1.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "jawn-parser_2.13",
+                    "version": "1.0.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jawn-parser_2.13",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/jawn-parser_2.13/1.0.0/jawn-parser_2.13-1.0.0.jar"
+                        },
+                        {
+                            "name": "jawn-parser_2.13",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/jawn-parser_2.13/1.0.0/jawn-parser_2.13-1.0.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.asynchttpclient",
+                    "name": "async-http-client-netty-utils",
+                    "version": "2.12.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "async-http-client-netty-utils",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/asynchttpclient/async-http-client-netty-utils/2.12.1/async-http-client-netty-utils-2.12.1.jar"
+                        },
+                        {
+                            "name": "async-http-client-netty-utils",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/asynchttpclient/async-http-client-netty-utils/2.12.1/async-http-client-netty-utils-2.12.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-codec-http",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-codec-http",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec-http/4.1.48.Final/netty-codec-http-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-codec-http",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec-http/4.1.48.Final/netty-codec-http-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-handler",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-handler",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-handler/4.1.48.Final/netty-handler-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-handler",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-handler/4.1.48.Final/netty-handler-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-codec-socks",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-codec-socks",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec-socks/4.1.48.Final/netty-codec-socks-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-codec-socks",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec-socks/4.1.48.Final/netty-codec-socks-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-handler-proxy",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-handler-proxy",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-handler-proxy/4.1.48.Final/netty-handler-proxy-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-handler-proxy",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-handler-proxy/4.1.48.Final/netty-handler-proxy-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.typesafe.netty",
+                    "name": "netty-reactive-streams",
+                    "version": "2.0.4",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-reactive-streams",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/netty/netty-reactive-streams/2.0.4/netty-reactive-streams-2.0.4.jar"
+                        },
+                        {
+                            "name": "netty-reactive-streams",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/netty/netty-reactive-streams/2.0.4/netty-reactive-streams-2.0.4-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.slf4j",
+                    "name": "slf4j-api",
+                    "version": "1.7.30",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "slf4j-api",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar"
+                        },
+                        {
+                            "name": "slf4j-api",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.sun.activation",
+                    "name": "javax.activation",
+                    "version": "1.2.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "javax.activation",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0.jar"
+                        },
+                        {
+                            "name": "javax.activation",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-buffer",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-buffer",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-buffer/4.1.48.Final/netty-buffer-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-buffer",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-buffer/4.1.48.Final/netty-buffer-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-common",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-common",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-common/4.1.48.Final/netty-common-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-common",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-common/4.1.48.Final/netty-common-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-transport",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-transport",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport/4.1.48.Final/netty-transport-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-transport",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport/4.1.48.Final/netty-transport-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-codec",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-codec",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec/4.1.48.Final/netty-codec-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-codec",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-codec/4.1.48.Final/netty-codec-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "io.netty",
+                    "name": "netty-resolver",
+                    "version": "4.1.48.Final",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "netty-resolver",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-resolver/4.1.48.Final/netty-resolver-4.1.48.Final.jar"
+                        },
+                        {
+                            "name": "netty-resolver",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-resolver/4.1.48.Final/netty-resolver-4.1.48.Final-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.3",
+                    "configurations": "optional",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.3/scala-library-2.13.3.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/home/ardfard/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.3/scala-library-2.13.3-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "library"
+        ]
+    }
+}
