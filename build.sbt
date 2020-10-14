@@ -25,7 +25,8 @@ lazy val root = (project in file("."))
       "io.circe" %% "circe-generic" % circeVersion,
       "io.circe" %% "circe-parser" % circeVersion
     ),
-    scalacOptions += "-Ymacro-annotations"
+    scalacOptions += "-Ymacro-annotations",
+    testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.

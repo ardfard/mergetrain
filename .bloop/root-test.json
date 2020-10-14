@@ -141,6 +141,11 @@
                     "names": [
                         "com.novocode.junit.JUnitFramework"
                     ]
+                },
+                {
+                    "names": [
+                        "zio.test.sbt.ZTestFramework"
+                    ]
                 }
             ],
             "options": {

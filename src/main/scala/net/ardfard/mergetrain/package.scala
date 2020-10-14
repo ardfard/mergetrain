@@ -1,10 +1,6 @@
 package net.ardfard
 
 import zio._
-import zio.stream.ZStream.Pull
-import net.ardfard.mergetrain.net.ardfard.mergetrain.PRValidation
-import net.ardfard.mergetrain.WorldView
-import java.nio.channels.Pipe
 
 package object mergetrain {
 
@@ -17,14 +13,47 @@ package object mergetrain {
     def act(zawarudo: WorldView): Task[WorldView]
   }
 
+  case class Config(maxRunning: Int)
+
   final case class WorldView(
-      val runningPipelines: Seq[(Pipeline, PullRequest)],
-      val completed: Seq[(Pipeline, PullRequest)],
-      val latestBranch: String,
-      val used: Int
-  )
+      val runningPipelines: Seq[(Pipeline, PullRequest)]
+  ) {
+    def isSkipAct: Boolean = {
+      def loop(
+          runningExist: Boolean,
+          rp: Seq[(Pipeline, PullRequest)]
+      ): Boolean =
+        (runningExist, rp) match {
+          case (_, Nil) => false
+          case (true, (p, _) :: rest) =>
+            p.state match {
+              case Pipeline.Completed(Pipeline.Failed) => true
+              case _                                   => loop(true, rest)
+            }
+          case (false, (p, _) :: rest) =>
+            p.state match {
+              case Pipeline.Completed(Pipeline.Failed) => false
+              case Pipeline.Running                    => loop(true, rest)
+              case _                                   => loop(false, rest)
+            }
+          case (p, rp) => loop(p, rp.tail)
+        }
+      loop(false, runningPipelines)
+    }
+  }
 
   type RepoOperation = Has[RepoOperation.Service]
+
+  def initialize(): RIO[Queue with CI with Config, WorldView] =
+    for {
+      maxRunning <- ZIO.access[Config](_.maxRunning)
+      activePipeline <- ZIO.foreachPar(0.to(maxRunning - 1)) { idx =>
+        for {
+          pr <- Queue.getAt(idx)
+          pipeline <- CI.getPipeline(pr.id)
+        } yield ((pipeline, pr))
+      }
+    } yield (WorldView(activePipeline))
 
   def update(
       zawarudo: WorldView
@@ -36,66 +65,65 @@ package object mergetrain {
             newP <- CI.getPipeline(p.id)
           } yield (newP, pr)
       }
-      val (completed, running) = updated.partition {
-        case (p, pr) =>
-          p.state match {
-            case Pipeline.Completed(result) => true
-            case _                          => false
-          }
-      }
     } yield (zawarudo.copy(
-      runningPipelines = updated,
-      completed = completed
+      runningPipelines = updated
     ))
 
   def act(
       zawarudo: WorldView
   ): RIO[CI with Queue with RepoOperation, WorldView] = {
+
     def processPipelines(
-        xs: Seq[(Pipeline, PullRequest)],
+        current: Seq[(Pipeline, PullRequest)],
         running: Seq[(Pipeline, PullRequest)]
-    ): RIO[CI with Queue with RepoOperation, Seq[(Pipeline, PullRequest)]] = ???
-    // xs match {
-    //   case Nil => ZIO.succeed(running)
-    //   case (p, pr) :: next =>
-    //     p.state match {
-    //       case Pipeline.Completed(Pipeline.Success) =>
-    //         (for {
-    //           _ <- ZIO.foreachPar(running.map(_._1))(p =>
-    //             CI.cancelPipeline(p.id)
-    //           )
-    //           _ <- ZIO.foreach(running.map(_._2) :+ pr)(_pr =>
-    //             Queue.remove(_pr.id) *> RepoOperation
-    //               .mergeBranch("master", _pr.branch)
-    //           )
-    //         } yield ()) *> processPipelines(next, Nil)
-    //       case Pipeline.Completed(Pipeline.Cancelled) => ???
-    //       case Pipeline.Completed(Pipeline.Failed) =>
-    //         if (running.isEmpty) {
-    //           ZIO.foreachPar(next) {
-    //             case (_p, _pr) => CI.cancelPipeline(_p.id)
-    //           } &> ZIO.foldLeft(next.map(_._2))(
-    //             (List.empty[Pipeline], "master")
-    //           ) {
-    //             case ((acc, b), _pr) =>
-    //               for {
-    //                 b <- RepoOperation.createBranch(pr.branch)
-    //                 pipeline <- CI.createPipeline(b)
-    //               } yield (pipeline)
-    //           }
-    //         } else ZIO.succeed(running.appended((p, pr)).appendedAll(next))
-    //       case _ => ???
-    //     }
+    ): RIO[CI with Queue with RepoOperation, Seq[(Pipeline, PullRequest)]] =
+      current match {
+        case Nil => ZIO.succeed(running)
+        case (p, pr) :: next =>
+          p.state match {
+            case Pipeline.Completed(Pipeline.Success) => {
+              val cancelRunning =
+                ZIO.foreachPar(running.map(_._1))(p => CI.cancelPipeline(p.id))
+              val mergeBranch = ZIO.foreach(running.map(_._2) :+ pr) { _pr =>
+                Queue.remove(_pr.id) *> RepoOperation.mergeBranch(
+                  "master",
+                  _pr.branch
+                )
+              }
+              ZIO.collectAllPar(
+                Seq(cancelRunning, mergeBranch)
+              ) *> processPipelines(
+                next,
+                Nil
+              )
+            }
+            case Pipeline.Completed(Pipeline.Cancelled) => ZIO.succeed(running)
+            case Pipeline.Completed(Pipeline.Failed) => {
+              val cancelPipelines = ZIO.foreachPar(next) {
+                case (_p, _pr) => CI.cancelPipeline(_p.id)
+              }
+              val runNewPipelines = ZIO.foldLeft(next.map(_._2))(
+                (Seq.empty[(Pipeline, PullRequest)], "master")
+              ) {
+                case ((acc, b), _pr) =>
+                  for {
+                    b <- RepoOperation.createStagingBranch(pr.branch, b)
+                    pipeline <- CI.createPipeline(b)
+                  } yield ((acc :+ (pipeline, _pr), b))
+              }
+              val removeFromQueue = Queue.remove(pr.id)
+              cancelPipelines &> runNewPipelines >>= {
+                case (running, _) => ZIO.succeed(running)
+              }
+            }
+            case Pipeline.Running => ZIO.succeed(running :+ (p, pr))
+            case _                => ZIO.succeed(running)
+          }
+      }
 
-    // }
-
-    processPipelines(zawarudo.runningPipelines, List.empty).flatMap(ps =>
+    processPipelines(zawarudo.runningPipelines, Nil).flatMap(ps =>
       ZIO.succeed(zawarudo.copy(runningPipelines = ps))
     )
-
-    /* >>= (p =>
-      ZIO.foreach(p.size.to(5)) { i => Queue.get(pos) }*/
-
   }
 
   type PRValidation = Has[PRValidation.Service]
@@ -113,14 +141,8 @@ package object mergetrain {
       _ <- Queue.remove(pr.id)
     } yield ()
 
-  def getPullRequests(): RIO[Queue, List[(PullRequest, Priority)]] =
+  def getPullRequests(): RIO[Queue, Seq[(PullRequest, Priority)]] =
     Queue.getAll()
-
-  def insertPullRequestAtPos(
-      pr: PullRequest,
-      pos: Int
-  ): RIO[Queue with PRValidation, Unit] =
-    PRValidation.validate(pr) *> Queue.insert(pr, pos)
 
   // def processQueue(
   //     maxRunningPipeline: Int
