@@ -102,22 +102,24 @@ package object mergetrain {
               val cancelPipelines = ZIO.foreachPar(next) {
                 case (_p, _pr) => CI.cancelPipeline(_p.id)
               }
+
               val runNewPipelines = ZIO.foldLeft(next.map(_._2))(
                 (Seq.empty[(Pipeline, PullRequest)], "master")
               ) {
                 case ((acc, b), _pr) =>
                   for {
-                    b <- RepoOperation.createStagingBranch(pr.branch, b)
+                    b <- RepoOperation.createStagingBranch(_pr.branch, b)
                     pipeline <- CI.createPipeline(b)
                   } yield ((acc :+ (pipeline, _pr), b))
               }
               val removeFromQueue = Queue.remove(pr.id)
+
               cancelPipelines &> runNewPipelines >>= {
                 case (running, _) => ZIO.succeed(running)
               }
             }
-            case Pipeline.Running => ZIO.succeed(running :+ (p, pr))
-            case _                => ZIO.succeed(running)
+            case Pipeline.Running => processPipelines(next, running :+ (p, pr))
+            case _                => processPipelines(next, running)
           }
       }
 

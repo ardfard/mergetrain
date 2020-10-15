@@ -11,8 +11,23 @@ import net.ardfard.mergetrain.Pipeline
 object CI {
   trait Service {
     def getPipeline(id: String): Task[Pipeline]
-    val getRunningPipelines: Task[Set[Pipeline]]
     def cancelPipeline(id: String): Task[Unit]
     def createPipeline(branch: String): Task[Pipeline]
   }
+
+  val printed: RLayer[Console, Has[Service]] =
+    ZLayer.fromFunction { console =>
+      new Service {
+        def getPipeline(id: String): zio.Task[Pipeline] =
+          console.get.putStrLn(s"get ${id}") *> ZIO.succeed(
+            Pipeline(id, "rand", Pipeline.Running)
+          )
+        def cancelPipeline(id: String): zio.Task[Unit] =
+          console.get.putStrLn(s"cancel $id")
+        def createPipeline(branch: String): zio.Task[Pipeline] =
+          console.get.putStrLn(s"create $branch") *> ZIO.succeed(
+            Pipeline("rand", branch, Pipeline.Running)
+          )
+      }
+    }
 }
