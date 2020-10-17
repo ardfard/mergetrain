@@ -87,6 +87,10 @@ object MergeTrainSpec extends DefaultRunnableSpec {
             (
               Pipeline("new5", "test5&test4&master", Pipeline.Running),
               PullRequest("5", "test5")
+            ),
+            (
+              Pipeline("new6", "test6&test5&test4&master", Pipeline.Running),
+              PullRequest("6", "test6")
             )
           )
         )
@@ -115,17 +119,33 @@ object MergeTrainSpec extends DefaultRunnableSpec {
           CIMock.CreatePipeline(
             equalTo("test5&test4&master"),
             value(expectedWorld.runningPipelines(1)._1)
-          )).repeats(4 to 10)
+          )).repeats(5 to 5)
+        val step5 = RepoOpsMock.CreateStagingBranch(
+          equalTo(("test6", "test5&test4&master")),
+          value("test6&test5&test4&master")
+        ) ++ CIMock.CreatePipeline(
+          equalTo("test6&test5&test4&master"),
+          value(expectedWorld.runningPipelines(2)._1)
+        )
         val mock: ULayer[CI with RepoOperation] =
-          step1 ++ step2 ++ step3 ++ step4
+          step1 ++ step2 ++ step3 ++ step4 ++ step5
 
-        val queuePRS = ZIO.foreach(activePipelines)(p => Queue.push(p._2, 0))
+        val queuePRS =
+          ZIO.foreach(activePipelines)(p => Queue.push(p._2, 0)) *> Queue.push(
+            expectedWorld.runningPipelines(2)._2,
+            0
+          )
         val eff = queuePRS *> act(WorldView(activePipelines))
+        val config = Config(5)
+        val queueLayer = zio.console.Console.live >+> inMemory
 
         assertM(
-          eff.provideLayer(
-            mock ++ inMemory
-          )
+          eff
+            .provideLayer(
+              (mock ++ queueLayer ++ Configuration(
+                5
+              ))
+            )
         )(
           equalTo(expectedWorld)
         )
@@ -150,7 +170,7 @@ object MergeTrainSpec extends DefaultRunnableSpec {
         val env: ULayer[CI] = (
           CIMock.CancelPipeline(equalTo(p1.id)) ||
             CIMock.CancelPipeline(equalTo(p2.id))
-        ).repeats(0 to 2)
+        ).repeats(0 to 1)
 
         import zio.console._
 
