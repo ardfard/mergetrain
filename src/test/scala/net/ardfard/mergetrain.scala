@@ -184,6 +184,6 @@ object MergeTrainSpec extends DefaultRunnableSpec {
           )
         )
         assertM(eff.provideLayer(env))(equalTo(List("1", "2")))
-      }
+      } @@ eventually
     )
 }
