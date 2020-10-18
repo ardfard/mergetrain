@@ -5,7 +5,7 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / organization := "net.ardfard"
 ThisBuild / organizationName := "ardfard"
 
-val zioVersion = "1.0.0"
+val zioVersion = "1.0.3"
 val circeVersion = "0.12.3"
 val sttpVersion = "2.2.9"
 
