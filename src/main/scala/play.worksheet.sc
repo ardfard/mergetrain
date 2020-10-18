@@ -4,7 +4,10 @@ import sttp.client._
 import sttp.client.asynchttpclient.zio._
 import sttp.client.SttpBackend
 import zio._
+import com.redis._
 
+val client = new RedisClient()
+client.close()
 val req = basicRequest
   .header(Header("x-auth", "somerandomstring"))
   .get(uri"https://httpbin.org/get")

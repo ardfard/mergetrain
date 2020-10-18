@@ -23,7 +23,8 @@ lazy val root = (project in file("."))
       "com.softwaremill.sttp.client" %% "circe" % sttpVersion,
       "io.circe" %% "circe-core" % circeVersion,
       "io.circe" %% "circe-generic" % circeVersion,
-      "io.circe" %% "circe-parser" % circeVersion
+      "io.circe" %% "circe-parser" % circeVersion,
+      "net.debasishg" %% "redisclient" % "3.30"
     ),
     scalacOptions += "-Ymacro-annotations",
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")

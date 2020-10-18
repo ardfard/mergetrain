@@ -48,15 +48,17 @@ package object mergetrain {
   def initialize(): RIO[Queue with CI with Configuration, WorldView] =
     for {
       maxRunning <- Configuration.config.map(_.maxRunning)
-      activePipeline <- ZIO.foreachPar(0.to(maxRunning - 1)) { idx =>
-        for {
-          pr <- Queue.getAt(idx)
-          if (pr.isDefined)
-          pipeline <- CI.getPipeline(pr.get.id)
-          if (pipeline.isDefined)
-        } yield ((pipeline.get, pr.get))
-      }
-    } yield (WorldView(activePipeline))
+      activePipelines <- ZIO.collectAllSuccesses(
+        0.to(maxRunning - 1)
+          .map(idx =>
+            for {
+              pr <- Queue.getAt(idx)
+              pipeline <- CI.getPipeline(pr.id)
+              if (pipeline.isDefined)
+            } yield ((pipeline.get, pr))
+          )
+      )
+    } yield (WorldView(activePipelines))
 
   def update(
       zawarudo: WorldView
@@ -92,7 +94,7 @@ package object mergetrain {
               val cancelRunning =
                 ZIO.foreachPar(running.map(_._1))(p => CI.cancelPipeline(p.id))
               val mergeBranch = ZIO.foreach(running.map(_._2) :+ pr) { _pr =>
-                Queue.remove(_pr.id) *> RepoOperation.mergeBranch(
+                Queue.remove(_pr) *> RepoOperation.mergeBranch(
                   "master",
                   _pr.branch
                 )
@@ -119,7 +121,7 @@ package object mergetrain {
                     pipeline <- CI.createPipeline(b)
                   } yield ((acc :+ (pipeline, _pr), b))
               }
-              val removeFromQueue = Queue.remove(pr.id)
+              val removeFromQueue = Queue.remove(pr)
 
               removeFromQueue &> cancelPipelines &> runNewPipelines >>= {
                 case (running, _) => ZIO.succeed(running)
@@ -134,10 +136,9 @@ package object mergetrain {
       ps <- processPipelines(zawarudo.runningPipelines, Nil)
       maxRunning <- Configuration.config.map(_.maxRunning)
       lastBranchRef <- Ref.make(ps.last._1.ref)
-      prsToRun <-
-        ZIO.collectAllSuccesses(ps.size.to(maxRunning - 1).map { idx =>
-          Queue.getAt(idx).someOrFailException
-        })
+      prsToRun <- ZIO.collectAllSuccesses(ps.size.to(maxRunning - 1).map {
+        Queue.getAt
+      })
       newPipelines <- ZIO.foreach(prsToRun) { pr =>
         for {
           lastBranch <- lastBranchRef.get
@@ -161,7 +162,7 @@ package object mergetrain {
       pr: PullRequest
   ): RIO[Queue, Unit] =
     for {
-      _ <- Queue.remove(pr.id)
+      _ <- Queue.remove(pr)
     } yield ()
 
   def getPullRequests(): RIO[Queue, Seq[(PullRequest, Priority)]] =
