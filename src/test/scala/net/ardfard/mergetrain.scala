@@ -7,6 +7,7 @@ import net.ardfard.mergetrain._
 import ci._
 import queue._
 import zio.ZIO
+import zio.test.TestAspect.eventually
 
 @mockable[CI.Service]
 object CIMock
@@ -149,7 +150,7 @@ object MergeTrainSpec extends DefaultRunnableSpec {
         )(
           equalTo(expectedWorld)
         )
-      },
+      } @@ eventually,
       testM("Test create pipeline") {
         val p = Pipeline("1", "testmaster", Pipeline.Running)
         val env: ULayer[RepoOperation with CI] = (RepoOpsMock
