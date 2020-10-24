@@ -6,6 +6,7 @@ import com.redis._
 import com.redis.serialization.{Format, Parse}
 import java.security.Provider.Service
 import zio.blocking._
+import zio.clock._
 import java.io.{
   ObjectOutputStream,
   ObjectInputStream,
@@ -24,11 +25,11 @@ package object queue {
       def push(pr: PullRequest, priority: Priority): Task[Unit]
       def pop(): Task[PullRequest]
       def remove(pr: PullRequest): Task[Unit]
-      def getAll(): Task[Seq[(PullRequest, Priority)]]
+      def getAll(): Task[Seq[PullRequest]]
       def getAt(pos: Int): Task[PullRequest]
     }
 
-    val redisLayer: Layer[Throwable, Has[RedisClient]] =
+    val redisClient: Layer[Throwable, Has[RedisClient]] =
       ZLayer.fromAcquireRelease(ZIO.effect(new RedisClient("localhost", 6379)))(
         r => UIO(r.close())
       )
@@ -48,47 +49,77 @@ package object queue {
       ZIO.effect {
         val byteIn = new ByteArrayInputStream(bytes)
         val objIn = new ObjectInputStream(byteIn)
-        val obj = objIn.read().asInstanceOf[PullRequest]
+        val obj = objIn.readObject().asInstanceOf[PullRequest]
         byteIn.close()
         obj
       }
 
-    val live: RLayer[Has[RedisClient] with Blocking, Queue] =
-      ZLayer.fromServices[RedisClient, Blocking.Service, Service](
-        (r, blocking) =>
-          new Service {
-            def push(pr: PullRequest, priority: Priority): zio.Task[Unit] =
-              serialize(pr).flatMap(serialized =>
+    private def rankWithPriority(nanotime: Long, priority: Int): Task[Long] =
+      Task.effect(s"$priority$nanotime".toLong)
+
+    val redisLayer
+        : RLayer[Has[RedisClient] with Blocking with clock.Clock, Queue] =
+      ZLayer.fromServices[
+        RedisClient,
+        Blocking.Service,
+        clock.Clock.Service,
+        Service
+      ]((r, blocking, clock) =>
+        new Service {
+          def push(pr: PullRequest, priority: Priority): zio.Task[Unit] =
+            for {
+              serialized <- serialize(pr)
+              nanotime <- clock.nanoTime
+              rank <- rankWithPriority(nanotime, priority)
+              _ <-
                 blocking
                   .effectBlocking(
-                    r.zadd(key, priority, serialized)
+                    r.zadd(key, rank, serialized)
                   )
                   .someOrFail(new Throwable())
-              ) *> ZIO.succeed()
-            def getAll(): zio.Task[Seq[(PullRequest, Priority)]] = ???
-            def getAt(pos: Int): zio.Task[PullRequest] =
-              blocking
-                .effectBlocking(
-                  r.zrange(key, pos, pos + 1)(
-                    Format.default,
-                    Parse.Implicits.parseByteArray
-                  )
+            } yield ()
+          def getAll(): zio.Task[Seq[PullRequest]] =
+            blocking
+              .effectBlocking(
+                r.zrange(key, 0, -1)(
+                  Format.default,
+                  Parse.Implicits.parseByteArray
                 )
-                .someOrFailException
-                .flatMap(res => ZIO.effect(res.head))
-                .flatMap(res => deserialize(res))
-
-            def remove(pr: PullRequest): zio.Task[Unit] =
-              serialize(pr).flatMap(serialized =>
-                blocking.effectBlocking(r.zrem(key, serialized))
               )
-            def pop(): zio.Task[PullRequest] =
-              for {
-                pr <- getAt(0)
-                _ <- remove(pr)
-              } yield pr
-          }
+              .someOrFailException
+              .flatMap(result =>
+                ZIO.foreach(result) { b =>
+                  for {
+                    pr <- deserialize(b)
+                  } yield pr
+                }
+              )
+
+          def getAt(pos: Int): zio.Task[PullRequest] =
+            blocking
+              .effectBlocking(
+                r.zrange(key, pos, pos + 1)(
+                  Format.default,
+                  Parse.Implicits.parseByteArray
+                )
+              )
+              .someOrFailException
+              .flatMap(res => ZIO.effect(res.head))
+              .flatMap(res => deserialize(res))
+
+          def remove(pr: PullRequest): zio.Task[Unit] =
+            serialize(pr).flatMap(serialized =>
+              blocking.effectBlocking(r.zrem(key, serialized))
+            )
+          def pop(): zio.Task[PullRequest] =
+            for {
+              pr <- getAt(0)
+              _ <- remove(pr)
+            } yield pr
+        }
       )
+    val live = (ZLayer.identity[Blocking] ++ ZLayer
+      .identity[Clock] ++ redisClient) >>> redisLayer
   }
 
   import console._
@@ -101,8 +132,8 @@ package object queue {
           queue.addOne((pr, priority)).sortInPlaceBy(_._2)
         )
       }
-      def getAll(): zio.Task[Seq[(PullRequest, Priority)]] = {
-        ZIO.succeed(queue.toList)
+      def getAll(): zio.Task[Seq[PullRequest]] = {
+        ZIO.succeed(queue.toList map (_._1))
       }
 
       def pop(): zio.Task[PullRequest] = {

@@ -165,7 +165,7 @@ package object mergetrain {
       _ <- Queue.remove(pr)
     } yield ()
 
-  def getPullRequests(): RIO[Queue, Seq[(PullRequest, Priority)]] =
+  def getPullRequests(): RIO[Queue, Seq[PullRequest]] =
     Queue.getAll()
 
 }

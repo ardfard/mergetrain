@@ -17,7 +17,9 @@ object RepoOpsMock
 
 object MergeTrainSpec extends DefaultRunnableSpec {
 
-  def spec =
+  def spec = suite("All suites")(domainLogic)
+
+  val domainLogic =
     suite("MergeTrainSpec")(
       test(
         "skip act when there are failures but previous pipeline is still running"

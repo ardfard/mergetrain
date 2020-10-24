@@ -192,7 +192,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "/usr/lib/jvm/java-11-openjdk-amd64",
+                "home": "/home/ardfard/.cache/coursier/jvm/adopt@1.11.0-8",
                 "options": [
                     "-Duser.dir=/home/ardfard/Documents/codes/mergetrain/project"
                 ]
